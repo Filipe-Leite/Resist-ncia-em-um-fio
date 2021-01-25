@@ -1,4 +1,11 @@
+# Este código plota os gráficos da resistência em um fio, dada pela equação r = rô*l/a (sendo "rô" a descrição dapropriedade resistiva
+#       do material; "l" o comprimento do fio; e "a" a aréa do fio [um cilíndro]). Pedindo para o usuário entrar com um valor que vai variar
+#       enquanto os outros dois valores valores da equação permanecerão constantes. O código cria duas listas, sendo definida na variável x (escolhida
+#       pelo usuário) e outra lista será os valores de r (que será o y da função. A resistência calculada pela função "equacao_resistencia").
+
 import matplotlib.pyplot as plt
+
+# Esta função irá gerar uma lista com vários valores crescentes de "rô"
 
 def valores_resistividade_varia():
     valoresdex=[0.01]
@@ -8,6 +15,8 @@ def valores_resistividade_varia():
 
     return valoresdex
 
+# Esta função irá gerar uma lista com vários valores crescentes de "l"
+
 def valores_comprimento_varia():
     valoresdex=[0.10]
     for i in range(199):
@@ -16,6 +25,7 @@ def valores_comprimento_varia():
 
     return valoresdex
 
+# Esta função irá gerar uma lista com vários valores crescentes de "a"
 
 def valores_area_varia():
     valoresdex = [0.01]
@@ -24,6 +34,8 @@ def valores_area_varia():
         valoresdex.append(novovalor)
 
     return valoresdex
+
+# Esta função irá calcular o valor da resistência a partir da equação da resistência
 
 def equacao_resistencia(valores, variacao):
     if variacao == 'ro':
@@ -39,6 +51,8 @@ def equacao_resistencia(valores, variacao):
         r = float(valores[0]) * float(valores[1]) / valores[2]
 
     return r
+
+# Aqui o usuário entrará com o que irá variar
 
 variacao=input('O que vai variar? ro / l / a \n\n')
 
@@ -87,6 +101,8 @@ if variacao == 'a':
         r = equacao_resistencia(valores, variacao)
         valoresder.append(r)
 
+# Esta parte do código irá plotar o gráfico        
+        
 plt.plot(valoresdex, valoresder) #criando o gráfico
 plt.title('Resistência em um fio\n(Resistence in a wire)') #adicionando o título
 plt.xlabel(nomedex)
